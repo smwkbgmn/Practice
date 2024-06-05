@@ -37,6 +37,7 @@ vec_str_t
 Solution::commonChars(vec_str_t& words) {
 	map_char_uint_t comn;
 
+	// Assigning common letter and count of appearance to the map like a, 3 / b, 2 / z, 5 from first word
 	for (auto idx = 0; idx < words.front().length(); ++idx) {
 		if (comn.find(words.front()[idx]) == comn.end())
 			comn.insert(std::make_pair(words.front()[idx], 1));
@@ -44,6 +45,9 @@ Solution::commonChars(vec_str_t& words) {
 			++comn.at(words.front()[idx]);
 	}
 
+	// Seeing all words once, compare with the common letter map with current word and
+	// so doing that decrease the common letter appearances. By decreasing count of elements for
+	// criteria of common letter map, can obtain less comparing count
 	for (auto it_words = words.begin(); it_words != words.end(); ++it_words) {
 		auto it_comn = comn.begin();
 
@@ -61,6 +65,7 @@ Solution::commonChars(vec_str_t& words) {
 		}
 	}
 
+	// Assign string vector based from common letter map
 	vec_str_t rst;
 	for (auto it = comn.begin(); it != comn.end(); ++it) {
 		for (auto cnt = it->second; cnt > 0; --cnt)
