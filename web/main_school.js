@@ -19,7 +19,7 @@ texture.load('cloud.jpg', function(texture) {
     scene.background = texture;
 });
 
-const lightAmbient = new THREE.AmbientLight( 0xffffff, 0.35 );
+const lightAmbient = new THREE.AmbientLight( 0xffffff, 1 ); // 0.35
 scene.add( lightAmbient );
 
 /* LIGHTS */
@@ -29,9 +29,9 @@ const frontRight = new THREE.DirectionalLight( 0xffffff, 0.9 );
 frontLeft.position.set( -0.5, 0.2, -0.2 );
 frontLeft.position.set( 0, 0.2, -0.2 );
 frontRight.position.set( 0.5, 0.2, -0.2 );
-scene.add( frontLeft );
-scene.add( frontMid );
-scene.add( frontRight );
+// scene.add( frontLeft );
+// scene.add( frontMid );
+// scene.add( frontRight );
 
 
 const rearLeft = new THREE.DirectionalLight( 0xffffff, 0.9 );
@@ -40,13 +40,13 @@ const rearRight = new THREE.DirectionalLight( 0xffffff, 0.9 );
 rearLeft.position.set( -0.5, 0.2, 0.4 );
 rearMid.position.set( 0, 0.2, 0.4 );
 rearRight.position.set( 0.5, 0.2, 0.4 );
-scene.add( rearLeft );
-scene.add( rearMid );
-scene.add( rearRight ); 
+// scene.add( rearLeft );
+// scene.add( rearMid );
+// scene.add( rearRight ); 
 
 const hemi = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1.2 );
 hemi.position.set( 0, 0, 0 );
-scene.add( hemi );
+// scene.add( hemi );
 
 // const hemiHelper = new THREE.HemisphereLightHelper( hemi, 5 );
 // scene.add( hemiHelper );
@@ -80,10 +80,10 @@ controls.dampingFactor = 0.05;
 
 controls.screenSpacePanning = false;
 
-controls.minDistance = 0;
-controls.maxDistance = 1; 
-controls.minPolarAngle = Math.PI / 3;
-controls.maxPolarAngle = Math.PI / 1.5;
+// controls.minDistance = 0;
+// controls.maxDistance = 1000; 
+// controls.minPolarAngle = Math.PI / 3;
+// controls.maxPolarAngle = Math.PI / 1.5;
 
 
 /* LOAD ASSET */
@@ -98,12 +98,13 @@ const loader = new GLTFLoader();
 // Load a glTF resource
 loader.load(
 	// resource URL
-	'school_class_room/scene.gltf',
+	// 'school_class_room/scene.gltf',
+	'bran/scene.gltf',
 
 	// called when the resource is loaded
 	function ( gltf ) {
 
-		gltf.scene.position.set( 96.55, -1.55, -13 );
+		// gltf.scene.position.set( 96.55, -1.55, -13 );
 
 		scene.add( gltf.scene );
 
