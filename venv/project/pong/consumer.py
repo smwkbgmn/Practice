@@ -30,12 +30,12 @@ class Consumer(AsyncWebsocketConsumer):
 
 		self.connection = True
 
-	async def disconnect(self):
-		self.connection = False
+	# async def disconnect(self):
+	# 	self.connection = False
 
-		if self.channel_name in self.queue: self.queue.remove(self.channel_name)
-		if self.group_id:
-			await self.channel_layer.group_discard(self.group_id, self.channel_name)
+	# 	if self.channel_name in self.queue: self.queue.remove(self.channel_name)
+	# 	if self.group_id:
+	# 		await self.channel_layer.group_discard(self.group_id, self.channel_name)
 
 	async def receive(self, text_data):
 		data = json.loads(text_data)
@@ -101,7 +101,6 @@ class Consumer(AsyncWebsocketConsumer):
 	
 	def matches_create(self, players):
 		print("consumer >> creating matches")
-
 		# random.shuffle(players)
 
 		matches = []
@@ -121,7 +120,6 @@ class Consumer(AsyncWebsocketConsumer):
 					'player2'	: None,
 					'winner'	: players[i]
 				})
-		print("consumer >> matches_create assigned", len(matches), "games")
 		return matches
 	
 	async def handle_join_room(self, game_id, side): await self.game[game_id].add_player(self.channel_name, side)

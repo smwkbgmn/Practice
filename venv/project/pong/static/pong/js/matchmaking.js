@@ -14,12 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		matchButton.addEventListener('click', () => {
 			statusDiv.textContent = 'Connecting to server...';
 			
-            setSocket(parseInt(tournSizeSelect.value));
+            setSocket(statusDiv, parseInt(tournSizeSelect.value));
         });
     }
 });
 
-function setSocket(tournSize) {
+function setSocket(statusDiv, tournSize) {
 	socket = new WebSocket('ws://' + window.location.host + '/ws/pong');
 
 	socket.onopen = function(event) {
