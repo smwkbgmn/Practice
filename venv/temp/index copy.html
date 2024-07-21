@@ -1,0 +1,16 @@
+{% load static %}
+
+<h1>Pong Tournament Matchmaking</h1>
+
+<label for="tournamentSize">Select Tournament Size:</label>
+<select id="tournamentSize">
+    <option value="2">2 players</option>
+    <option value="4">4 players</option>
+    <option value="8">8 players</option>
+</select>
+
+<button id="findMatch">Find Match</button>
+
+<div id="status"></div>
+
+<script src="{% static 'pong/js/matchmaking.js' %}"></script>
